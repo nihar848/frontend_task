@@ -17,8 +17,9 @@ const Login = () => {
       const loginHandler = () => {
         login('api/login', {email,password}).then((data)=>{
           
-          
+          console.log(data);
           if(data.message == 'Login successfull'){
+            
             alert(data.message);
             dispatch(setLoginState(true));
             navigate('/Home');
