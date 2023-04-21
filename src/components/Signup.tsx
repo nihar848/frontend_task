@@ -13,7 +13,7 @@ const Signup = () => {
   const register = () => {
     signup('api/signup', {email,name,password}).then((data)=>{
       alert(data.message);
-     navigate('/');
+     navigate('/login');
     })
   }
   return (
@@ -21,22 +21,25 @@ const Signup = () => {
       <Box>
         <Grid container spacing={3} direction={'column'} justifyContent={'center'} alignItems={'center'}>
           <Grid item xs={12}>
-            <TextField label="Email" onChange={(e)=>{
+            <TextField label="Email" value={email} onChange={(e)=>{
               email = e.target.value;
             }}></TextField>
           </Grid>
           <Grid item xs={12}>
-            <TextField label="Name" onChange={(e)=>{
+            <TextField label="Name" value={name} onChange={(e)=>{
               name = e.target.value;
             }}></TextField>
           </Grid>
           <Grid item xs={12}>
-            <TextField label="Password" type={'password'} onChange={(e)=>{
+            <TextField label="Password" type={'password'} value={password} onChange={(e)=>{
               password = e.target.value;
             }}></TextField>
           </Grid>
           <Grid item xs={12}>
             <Button fullWidth onClick={register}> Sign Up </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button fullWidth onClick={()=>navigate('/login')}> Login </Button>
           </Grid>
         </Grid>
       </Box>

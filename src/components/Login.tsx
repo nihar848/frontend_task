@@ -18,11 +18,12 @@ const Login = () => {
         login('api/login', {email,password}).then((data)=>{
           
           console.log(data);
-          if(data.message == 'Login successfull'){
-            
+          if(data.message == 'Login successfull'){           
             alert(data.message);
             dispatch(setLoginState(true));
-            navigate('/Home');
+            navigate('/');
+          }if(data.message == 'User validation fail'){
+            alert(data.message);
           }
          
         })
@@ -43,6 +44,11 @@ const Login = () => {
           </Grid>
           <Grid item xs={12}>
             <Button fullWidth onClick={loginHandler}> Login </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button fullWidth onClick={()=>{
+              navigate('/Signup');
+            }}> Sign up </Button>
           </Grid>
           </Grid>
         </Box>
